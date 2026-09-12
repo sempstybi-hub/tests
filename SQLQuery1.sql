@@ -158,14 +158,14 @@ VALUES (2, 3, '2025-09-16', '2025-09-30', 'Active');
 GO
 
 BACKUP LOG [LibraryDB]
-TO DISK = N'C:\Users\STUDENT\Documents\03-1ÈÑÏ24\Backup\LibraryDB_Log.trn'
+TO DISK = N'C:\Verb\Backup\LibraryDB_Log.trn'
 WITH NAME = N'LibraryDB-Log Backup', STATS = 10;
 GO
 
 BACKUP DATABASE [LibraryDB]
-TO DISK = N'C:\Users\STUDENT\Documents\03-1ÈÑÏ24\Backup\LibraryDB_Diff.bak'
+TO DISK = N'C:\Verb\Backup\LibraryDB_Diff.bak'
 WITH DIFFERENTIAL, NAME = N'LibraryDB-Diff Backup', STATS = 10;
-
+GO
 
 SELECT 
 	database_name,
