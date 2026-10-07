@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище MaxPCModelContainer" CdmEntityContainer="MaxPCEntities1">
+    <EntitySetMapping Name="Computer">
+      <EntityTypeMapping TypeName="MaxPCModel.Computer">
+        <MappingFragment StoreEntitySet="Computer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Istue" ColumnName="Istue" />
+          <ScalarProperty Name="Baner" ColumnName="Baner" />
+          <ScalarProperty Name="IMG1" ColumnName="IMG1" />
+          <ScalarProperty Name="IMG2" ColumnName="IMG2" />
+          <ScalarProperty Name="IMG3" ColumnName="IMG3" />
+          <ScalarProperty Name="Descriptoin" ColumnName="Descriptoin" />
+          <ScalarProperty Name="Info" ColumnName="Info" />
+          <ScalarProperty Name="Id_USER" ColumnName="Id_USER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Evaluation">
+      <EntityTypeMapping TypeName="MaxPCModel.Evaluation">
+        <MappingFragment StoreEntitySet="Evaluation">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_USER" ColumnName="Id_USER" />
+          <ScalarProperty Name="Id_COMPU" ColumnName="Id_COMPU" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MaxPCModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="MaxPCModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="First" ColumnName="First" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="IsTrueEmail" ColumnName="IsTrueEmail" />
+          <ScalarProperty Name="IsTruePhone" ColumnName="IsTruePhone" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

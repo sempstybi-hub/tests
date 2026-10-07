@@ -1,0 +1,124 @@
+﻿<Page x:Class="ComePC.Pages.Menu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ComePC.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Menu">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Главная"
+               FontSize="48"/>
+
+        <StackPanel Orientation="Horizontal"
+                    Margin="20,28,20,12"
+                    HorizontalAlignment="Right">
+
+            <TextBox x:Name="Shear_TXB"
+                     Width="200"/>
+            <Button x:Name="Shear_BT"
+                    Width="26" Height="26"
+                    Padding="0">
+                <mah:FontIcon Glyph="&#xE721;"
+                              FontSize="17"/>
+            </Button>
+
+        </StackPanel>
+
+
+        <mah:ProgressRing Grid.Row="1"
+                          x:Name="Loding_PRB"
+                          Visibility="Collapsed"/>
+        <ListView ItemsSource="{Binding Items}"
+                  Grid.Row="1"
+                  BorderThickness="0"
+                  Background="Transparent"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+            <!-- Отключаем стиль выделения, чтобы карточка не подсвечивалась синим -->
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListViewItem">
+                                <ContentPresenter/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="250"
+                          Height="200"
+                          Margin="3"
+                          Background="#FFE6E6E6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="2.5*"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Source="{Binding ImagePath}" Stretch="UniformToFill"/>
+
+                        <StackPanel Grid.Row="1" Margin="5,3">
+                            <Label Content="{Binding Name}"
+                                   FontSize="22"
+                                   Foreground="{StaticResource MahApps.Brushes.Accent}"/>
+                            <TextBlock Text="{Binding Info}"
+                                       TextWrapping="Wrap"
+                                       FontSize="11"
+                                       Foreground="Gray"/>
+                            <Label Content="{Binding Price, StringFormat={}{0}₽}"
+                                   FontSize="20"
+                                   Foreground="#148D30"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    Margin="0,10">
+
+            <Button x:Name="Login_BT"
+                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"
+                    Content="Создать обявление"
+                    FontSize="20"
+                    Padding="10,4"/>
+
+            <Button x:Name="Acc_BT"
+                    Style="{StaticResource MahApps.Styles.Button.Square}"
+                    Margin="7,0,0,0"
+                    Content="Кабинет"
+                    FontSize="20"
+                    Padding="10,4" Click="Acc_BT_Click"/>
+
+            <Button x:Name="Loguot_BT"
+                    Style="{StaticResource MahApps.Styles.Button.Square}"
+                    Margin="7,0,0,0"
+                    Content="Выйти"
+                    FontSize="20"
+                    Padding="10,4" Click="Loguot_BT_Click"/>
+        </StackPanel>
+
+    </Grid>
+</Page>

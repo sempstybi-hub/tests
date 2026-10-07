@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище MaxPCModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Computer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="Istue" Type="bit" Nullable="false" />
+    <Property Name="Baner" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IMG1" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IMG2" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IMG3" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Descriptoin" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Info" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="Id_USER" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Evaluation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id_USER" Type="int" Nullable="false" />
+    <Property Name="Id_COMPU" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="First" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Phone" Type="bigint" Nullable="false" />
+    <Property Name="IsTrueEmail" Type="bit" Nullable="false" />
+    <Property Name="IsTruePhone" Type="bit" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+    <Property Name="Avatar" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Evaluation_Computer">
+    <End Role="Computer" Type="Self.Computer" Multiplicity="1" />
+    <End Role="Evaluation" Type="Self.Evaluation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Computer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Evaluation">
+        <PropertyRef Name="Id_COMPU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Evaluation_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Evaluation" Type="Self.Evaluation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Evaluation">
+        <PropertyRef Name="Id_USER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище MaxPCModelContainer">
+    <EntitySet Name="Computer" EntityType="Self.Computer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Evaluation" EntityType="Self.Evaluation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Evaluation_Computer" Association="Self.FK_Evaluation_Computer">
+      <End Role="Computer" EntitySet="Computer" />
+      <End Role="Evaluation" EntitySet="Evaluation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Evaluation_Users" Association="Self.FK_Evaluation_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Evaluation" EntitySet="Evaluation" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
